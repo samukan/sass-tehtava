@@ -1,0 +1,159 @@
+@import "base";
+
+@mixin center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+%text-center {
+  text-align: center;
+}
+
+body {
+  margin: 0;
+  font: 100% $font-stack;
+  font-size: $font-size-base;
+  line-height: 1.6;
+  color: $text-color;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.topnav {
+  list-style-type: none;
+  margin: 0 0 $margin-bottom;
+  padding: 0;
+  overflow: hidden;
+  background-color: $primary-color;
+
+  li {
+    float: left;
+
+    &.right {
+      float: right;
+    }
+
+    a {
+      display: block;
+      color: $text-color;
+      @extend %text-center;
+      padding: $padding-vertical $padding-horizontal;
+
+      &:hover:not(.active) {
+        background-color: $secondary-color;
+      }
+
+      &.active {
+        background-color: $active-bg-color;
+        color: white;
+      }
+    }
+  }
+}
+
+.content {
+  padding: 0 $padding-horizontal;
+  width: $content-width;
+  margin: 0 auto;
+  text-align: center;
+
+  h2 {
+    @extend %text-center;
+    margin-bottom: $margin-bottom / 2;
+    color: $primary-color;
+  }
+
+  p {
+    margin-bottom: $margin-bottom / 2;
+    color: $text-color;
+
+    &:nth-of-type(odd) {
+      color: $primary-color;
+    }
+  }
+
+  ol {
+    margin: 0 auto $margin-bottom;
+    padding: 0;
+    list-style-position: outside;
+    text-align: center;
+    width: auto;
+    @include center;
+
+    li {
+      margin-bottom: 10px;
+
+      &:nth-child(1) span {
+        color: $primary-color;
+      }
+      &:nth-child(2) span {
+        color: $secondary-color;
+      }
+      &:nth-child(3) span {
+        color: $primary-color;
+      }
+      &:nth-child(4) span {
+        color: $secondary-color;
+      }
+    }
+  }
+
+  .box {
+    width: $box-width;
+    border: $border-width solid $primary-color;
+    border-radius: $border-radius;
+    padding: 20px;
+    margin: $margin-bottom auto;
+    @include center;
+    text-align: center;
+    color: $primary-color;
+  }
+}
+
+img {
+  margin-bottom: $margin-bottom;
+}
+
+.center {
+  @include center;
+  text-align: center;
+}
+
+footer {
+  padding: $margin-bottom 0;
+  background-color: #f9f9f9;
+
+  p {
+    @extend %text-center;
+    color: #666;
+    font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav li {
+    float: none;
+    width: 100%;
+
+    a {
+      text-align: left;
+      padding-left: $padding-horizontal;
+    }
+  }
+
+  .content {
+    width: 100%;
+    padding: 0 ($padding-horizontal / 2);
+
+    .box {
+      width: 80%;
+    }
+
+    ol {
+      width: 100%;
+    }
+  }
+}
